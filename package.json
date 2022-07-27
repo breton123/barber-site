@@ -9,6 +9,7 @@
     "@heroicons/react": "^1.0.6",
     "next": "latest",
     "react": "18.1.0",
+    "react-awesome-reveal": "^3.8.1",
     "react-dom": "18.1.0",
     "recoil": "^0.7.4",
     "swiper": "^8.3.1"
