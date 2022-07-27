@@ -3,7 +3,7 @@ import { PlusIcon, MinusIcon } from "@heroicons/react/solid"
 
 function Work() {
     const [activeTab, setActiveTab] = useState(0);
-    const [showMore, setShowMore] = useState(false);
+    const [showMore, setShowMore] = useState(true);
 
     return (
         <div className="flex flex-col items-center pt-40 pb-20">
@@ -40,29 +40,30 @@ function Work() {
                     <h1 className={`${activeTab==2 ? "text-white" : "text-gray-900"} font-semibold ml-2 transition duration-200 ease-out`}>CLASSIC</h1>
                 </div>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 pt-10">
-                <img src="Images/fade1.jpg" className="w-full h-full object-cover pl-10 pr-5 shadow-xl grayscale hover:grayscale-0 transition duration-300 ease-out hover:scale-105"></img>
+            <div className={`${activeTab==0 ? "flex md:grid" : "hidden"} md:grid-cols-3 lg:grid-cols-4 pt-10 flex-col items-center space-y-5`}>
+                <img src="Images/fade1.jpg" className="w-full h-full object-cover pl-5 md:pl-10 pr-5 shadow-xl grayscale hover:grayscale-0 transition duration-300 ease-out hover:scale-105"></img>
                 <img src="Images/fade2.png" className="w-full h-full object-cover px-5 shadow-xl grayscale hover:grayscale-0 transition duration-300 ease-out hover:scale-105"></img>
                 <img src="Images/fade3.png" className="w-full h-full object-cover px-5 shadow-xl grayscale hover:grayscale-0 transition duration-300 ease-out hover:scale-105"></img>
-                <img src="Images/fade4.png" className="w-full h-full object-cover pl-5 pr-10 shadow-xl grayscale hover:grayscale-0 transition duration-300 ease-out hover:scale-105"></img>
+                <img src="Images/fade4.png" className="w-full h-full object-cover pl-5 pr-5 md:pr-10 shadow-xl grayscale hover:grayscale-0 transition duration-300 ease-out hover:scale-105"></img>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 pt-10">
-                <img src="Images/fade5.jpg" className="w-full h-full object-cover pl-10 pr-5 shadow-xl grayscale hover:grayscale-0 transition duration-300 ease-out hover:scale-105"></img>
+            <div className={`${showMore && activeTab==0 ? "flex md:grid" : "hidden"} ${activeTab==2 ? "flex md:grid" : ""} ${activeTab==1 ? "hidden" : ""}  md:grid-cols-3 lg:grid-cols-4 pt-5 md:pt-10  flex-col items-center space-y-5`}>
+                <img src="Images/fade5.jpg" className={`w-full h-full object-cover pl-5 md:pl-10 pr-5 shadow-xl grayscale hover:grayscale-0 transition duration-300 ease-out hover:scale-105`}></img>
                 <img src="Images/fade6.png" className="w-full h-full object-cover px-5 shadow-xl grayscale hover:grayscale-0 transition duration-300 ease-out hover:scale-105"></img>
                 <img src="Images/fade7.jpg" className="w-full h-full object-cover px-5 shadow-xl grayscale hover:grayscale-0 transition duration-300 ease-out hover:scale-105"></img>
-                <img src="Images/fade8.jpg" className="w-full h-full object-cover pl-5 pr-10 shadow-xl grayscale hover:grayscale-0 transition duration-300 ease-out hover:scale-105"></img>
+                <img src="Images/fade8.jpg" className="w-full h-full object-cover pl-5 pr-5 md:pr-10 shadow-xl grayscale hover:grayscale-0 transition duration-300 ease-out hover:scale-105"></img>
             </div>
-            <div className={`${showMore ? "block" : "hidden"} grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 pt-10`}>
-                <img src="Images/fade9.png" className="w-full h-full object-cover pl-10 pr-5 shadow-xl grayscale hover:grayscale-0 transition duration-300 ease-out hover:scale-105"></img>
+            <div className={`${showMore && activeTab==0 ? "hidden md:grid" : "hidden"} ${activeTab==1 ? "flex md:grid" : ""} ${activeTab==2 ? "hidden" : ""} md:grid-cols-3 lg:grid-cols-4 pt-5 md:pt-10 flex-col items-center space-y-5`}>
+                <img src="Images/fade9.png" className="w-full h-full object-cover pl-5 md:pl-10 pr-5 shadow-xl grayscale hover:grayscale-0 transition duration-300 ease-out hover:scale-105"></img>
                 <img src="Images/fade10.png" className="w-full h-full object-cover px-5 shadow-xl grayscale hover:grayscale-0 transition duration-300 ease-out hover:scale-105"></img>
                 <img src="Images/fade11.png" className="w-full h-full object-cover px-5 shadow-xl grayscale hover:grayscale-0 transition duration-300 ease-out hover:scale-105"></img>
-                <img src="Images/fade12.png" className="w-full h-full object-cover pl-5 pr-10 shadow-xl grayscale hover:grayscale-0 transition duration-300 ease-out hover:scale-105"></img>
+                <img src="Images/fade12.png" className="w-full h-full object-cover pl-5 pr-5 md:pr-10 shadow-xl grayscale hover:grayscale-0 transition duration-300 ease-out hover:scale-105"></img>
             </div>
-            {!showMore && 
-                <button onClick={() => {setShowMore(true)}} className="mt-10 text-gray-900 px-3 py-2 bg-[#bf9456] shadow-xl text-xl font-medium hover:scale-110 transition duration-200 ease-out">SHOW MORE</button>
+            {!showMore &&
+                <button onClick={() => {setShowMore(true)}} className={`mt-10 text-gray-900 ${activeTab==0 ? "block" : "hidden"} px-3 py-2 bg-[#bf9456] shadow-xl text-xl font-medium hover:scale-110 transition duration-200 ease-out`}>SHOW MORE</button>
+                
             }
             {showMore && 
-                <button onClick={() => {setShowMore(false)}} className="mt-10 text-gray-900 px-3 py-2 bg-[#bf9456] shadow-xl text-xl font-medium hover:scale-110 transition duration-200 ease-out">SHOW LESS</button>
+                <button onClick={() => {setShowMore(false)}} className={`mt-10 text-gray-900 ${activeTab==0 ? "block" : "hidden"} px-3 py-2 bg-[#bf9456] shadow-xl text-xl font-medium hover:scale-110 transition duration-200 ease-out`}>SHOW LESS</button>
             }
             
         </div>
